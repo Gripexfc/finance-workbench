@@ -4,6 +4,10 @@
 
 在线预览：<https://gripexfc.github.io/finance-workbench/>
 
+Cloudflare Pages：<https://finance-workbench-01e.pages.dev/>
+
+说明：`finance-workbench.pages.dev` 已被其他 Cloudflare Pages 项目占用，因此 Cloudflare 为本项目分配了 `finance-workbench-01e.pages.dev`。
+
 - 首次使用免费 7 天。
 - 到期后在“授权与设置”中粘贴授权方发来的离线签名授权码。
 - 不需要联网，不需要提供设备 ID。
