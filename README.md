@@ -2,6 +2,8 @@
 
 这是本地离线版本。macOS 双击 `start-finance-workbench.command`，Windows 双击 `start-finance-workbench.bat` 即可启动本地页面。
 
+在线预览：<https://gripexfc.github.io/finance-workbench/>
+
 - 首次使用免费 7 天。
 - 到期后在“授权与设置”中粘贴授权方发来的离线签名授权码。
 - 不需要联网，不需要提供设备 ID。
