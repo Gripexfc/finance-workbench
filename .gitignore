@@ -1,0 +1,9 @@
+# Seller secrets and local runtime state
+offline-license-private.pem
+runtime.json
+vendor-license-kit/
+.DS_Store
+*.log
+
+# Local test output
+.tmp/

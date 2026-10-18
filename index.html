@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="财务工作台单机 MVP：收入、应收应付、催收、资金、预算、固定资产、税务、发票、工资、费用、对账、报表、分析和现金预测。" />
+  <title>财务工作台 · 单机 MVP</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <a class="brand" href="#overview" data-route="overview">
+        <span class="brand-orbit"><i></i></span>
+        <span><strong>财务工作台</strong><small>Cashflow studio</small></span>
+      </a>
+      <div class="entity-switch">
+        <span class="entity-dot"></span>
+        <span><b id="entity-name">星河设计工作室</b><small>单主体 · CNY</small></span>
+        <span class="chevron">⌄</span>
+      </div>
+      <p class="nav-label">工作区</p>
+      <nav class="nav-list">
+        <button class="nav-item active" data-route="overview"><span class="nav-icon">⌂</span>财务总览</button>
+        <button class="nav-item" data-route="income"><span class="nav-icon">↗</span>收入管理</button>
+        <button class="nav-item" data-route="receivables"><span class="nav-icon">◔</span>应收账款</button>
+        <button class="nav-item" data-route="collection"><span class="nav-icon">◉</span>应收催收</button>
+        <button class="nav-item" data-route="payables"><span class="nav-icon">◒</span>应付账款</button>
+        <button class="nav-item" data-route="expenses"><span class="nav-icon">◇</span>费用报销</button>
+        <button class="nav-item" data-route="funds"><span class="nav-icon">▣</span>资金管理</button>
+        <button class="nav-item" data-route="forecast"><span class="nav-icon">⌁</span>现金预测</button>
+        <button class="nav-item" data-route="budget"><span class="nav-icon">◫</span>预算管理</button>
+        <button class="nav-item" data-route="fixedAssets"><span class="nav-icon">⬡</span>固定资产</button>
+        <button class="nav-item" data-route="tax"><span class="nav-icon">▤</span>税务管理</button>
+        <button class="nav-item" data-route="invoices"><span class="nav-icon">▥</span>发票管理</button>
+        <button class="nav-item" data-route="invoiceDeduction"><span class="nav-icon">▥</span>发票认证抵扣</button>
+        <button class="nav-item" data-route="invoiceCheck"><span class="nav-icon">▱</span>发票查验</button>
+        <button class="nav-item" data-route="allocation"><span class="nav-icon">▱</span>成本分摊</button>
+        <button class="nav-item" data-route="payroll"><span class="nav-icon">♧</span>工资管理</button>
+        <button class="nav-item" data-route="reconciliation"><span class="nav-icon">⌘</span>银行对账</button>
+        <button class="nav-item" data-route="cost"><span class="nav-icon">⌁</span>成本核算</button>
+        <button class="nav-item" data-route="closing"><span class="nav-icon">✓</span>期末结转</button>
+        <button class="nav-item" data-route="reports"><span class="nav-icon">▦</span>财务报表</button>
+        <button class="nav-item" data-route="analysis"><span class="nav-icon">⌁</span>财务分析</button>
+        <button class="nav-item" data-route="investments"><span class="nav-icon">⌁</span>投资管理</button>
+        <button class="nav-item" data-route="imports"><span class="nav-icon">⇧</span>导入中心</button>
+      </nav>
+      <p class="nav-label nav-label-lower">管理</p>
+      <nav class="nav-list">
+        <button class="nav-item" data-route="audit"><span class="nav-icon">◉</span>审计日志</button>
+        <button class="nav-item" data-route="backup"><span class="nav-icon">◌</span>数据备份</button>
+        <button class="nav-item" data-route="system"><span class="nav-icon">⚙</span>系统设置</button>
+        <button class="nav-item" data-route="selfCheck"><span class="nav-icon">⟲</span>系统自检</button>
+        <button class="nav-item" data-route="settings"><span class="nav-icon">⚙</span>授权与设置</button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="trial-card">
+        <div class="trial-top"><span class="trial-dot"></span><span>试用版</span><span class="trial-days" id="trial-days">7 天</span></div>
+        <p id="trial-copy">当前版本可免费使用 7 天</p>
+        <button class="text-button" data-action="open-activate">输入离线授权码 <span>→</span></button>
+      </div>
+      <div class="sidebar-footer"><span class="status-light"></span>本地数据已保存</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="crumb"><span>工作台</span><b>/</b><strong id="crumb-title">财务总览</strong></div>
+        <div class="top-actions">
+          <span class="today-label" id="today-label"></span>
+          <button class="outline-button" data-route="imports"><span>＋</span>导入数据</button>
+          <button class="avatar" aria-label="打开授权设置" data-route="settings">星</button>
+        </div>
+      </header>
+      <div id="page-root"></div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" data-action="close-modal" aria-label="关闭">×</button>
+      <div id="modal-content"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="vendor/xlsx.full.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
