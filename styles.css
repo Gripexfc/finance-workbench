@@ -105,6 +105,12 @@ h1 { max-width: 590px; margin: 14px 0 12px; color: var(--ink); font-size: clamp(
 .section-heading .muted-link { border: 0; padding: 5px 0; background: transparent; color: var(--cyan-dark); font-size: 11px; font-weight: 750; line-height: 1.3; white-space: nowrap; transition: color .18s ease, transform .18s ease; }
 .section-heading .muted-link:hover { color: var(--ink); transform: translateX(2px); }
 .metric-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 11px; }
+/* Separate top-level summaries, charts and tables without changing panel interiors. */
+@media screen {
+  .page > .metric-grid:not(.report-metrics) + .panel,
+  .page > .data-visual-panel:not(.report-chart-panel) + .panel,
+  .page > .closing-dashboard + .panel { margin-top: 16px; }
+}
 .metric-card { min-height: 112px; padding: 16px 17px; border: 1px solid rgba(255,255,255,.93); border-radius: var(--radius-lg); background: rgba(255,255,255,.75); box-shadow: 0 12px 30px rgba(68,131,148,.06); }
 .metric-card .metric-label { color: var(--muted); font-size: 10px; }
 .metric-card strong { display: block; margin: 11px 0 4px; font-size: 25px; letter-spacing: -.07em; }
@@ -327,7 +333,20 @@ body { font-size: 15px; }
 .report-table .report-total { font-weight: 850; color: var(--ink); }
 .report-total-row td { background: rgba(255,248,228,.64); font-weight: 780; }
 .report-total-row td.amount { font-size: 14px; }
+.report-period-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 14px 18px; margin-bottom: 14px; font-size: 12px; }
+.report-period-bar label { font-weight: 750; }
+.report-period-bar .form-control { width: 170px; }
+.report-period-bar > span { margin-left: auto; color: var(--muted); }
+.income-statement-panel > .panel-head { padding: 18px 18px 0; margin-bottom: 12px; }
+.income-statement-table { min-width: 520px; }
+.income-statement-table th:first-child { width: 54%; }
+.income-statement-table tbody th { color: var(--ink-soft); font-weight: 500; padding: 15px 18px; text-align: left; border-bottom: 1px solid #e9f1f3; }
+.income-statement-table tbody tr:not(.report-section-row):not(.report-total-row) th { padding-left: 32px; }
+.income-statement-table .report-section-row th { background: var(--cyan-soft); color: var(--ink); font-weight: 800; }
+.income-statement-table .report-total-row th { background: rgba(255,248,228,.64); color: var(--ink); font-weight: 780; }
+.report-basis-note { margin: 0; padding: 14px 18px; color: var(--muted); font-size: 11px; line-height: 1.7; }
 @media print {
+  .report-period-bar { display: none !important; }
   .sidebar, .topbar, .page-title-actions, .report-tabs, .report-chart-panel, .toast { display: none !important; }
   .app-shell { display: block; }
   .main-content { padding: 0; }
@@ -343,3 +362,31 @@ body { font-size: 15px; }
   .data-table th, .data-table td { padding: 7px 8px; font-size: 9px; }
   .report-table { min-width: 0; }
 }
+
+/* 产品成本核算沿用工作台配色与卡片样式 */
+.cost-period-control { display: flex; align-items: center; gap: 9px; color: var(--ink-soft); font-size: 12px; white-space: nowrap; }
+.cost-period-control .form-control { width: 156px; }
+.cost-dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 14px; }
+.cost-dashboard > .panel { min-width: 0; }
+.cost-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 17px; margin: 4px 0 12px; color: var(--muted); font-size: 11px; }
+.cost-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.cost-legend i { width: 12px; height: 9px; border-radius: 3px; }
+.cost-bar-material { fill: var(--cyan-dark); background: var(--cyan-dark); }
+.cost-bar-labor, .cost-bar-actual { fill: var(--cyan); background: var(--cyan); }
+.cost-bar-overhead, .cost-bar-standard { fill: var(--violet); background: var(--violet); }
+.cost-chart-scroll { overflow-x: auto; }
+.cost-chart { display: block; width: 100%; height: 282px; }
+.cost-chart .chart-label { font-size: 10px; }
+.cost-chart-empty { display: grid; place-items: center; min-height: 282px; }
+.cost-detail-panel { padding: 0; overflow: hidden; }
+.cost-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+.cost-toolbar .search { min-width: 180px; max-width: 250px; flex: 1; }
+.cost-toolbar .select { width: auto; min-width: 112px; }
+.cost-table-count { margin-left: auto; color: var(--muted); font-size: 12px; }
+.cost-table { min-width: 1290px; }
+.cost-table td:first-child { min-width: 180px; }
+.cost-table td small { font-size: 10px; }
+.cost-row-actions { display: flex; gap: 6px; }
+.cost-detail-panel .preview-box { margin: 16px 18px; }
+@media (max-width: 1100px) { .cost-dashboard { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .cost-period-control { margin-top: 6px; }.cost-toolbar { padding: 13px; }.cost-toolbar .search { max-width: none; flex-basis: calc(100% - 130px); }.cost-table-count { margin-left: 0; } }

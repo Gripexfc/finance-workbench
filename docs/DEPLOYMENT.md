@@ -33,7 +33,10 @@ node generate-license.mjs --customer "客户名称" --days 365 --edition "专业
 
 ```bash
 node --check app.js
+node tests/finance-format-regression.cjs
 node --check ../../vendor-license-kit/generate-license.mjs
 ```
+
+回归脚本覆盖利润表与 Excel 口径、产品成本计算和导入校验、备份校验，以及旧版本迁移后刷新不混入示例成本。
 
 用卖家工具生成测试码，复制到应用的“输入离线授权码”弹窗，验证成功后刷新页面，授权信息仍应保留。

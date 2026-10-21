@@ -7,3 +7,4 @@ vendor-license-kit/
 
 # Local test output
 .tmp/
+.wrangler/
